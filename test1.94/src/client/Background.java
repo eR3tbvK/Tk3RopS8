@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 public class Background extends JPanel implements Serializable {
 	//Changed and committed!!! Testing 123
+	//a change now
 	private BufferedImage background;
 	private static final long serialVersionUID = 3;
 	private int xCoordinate = 400;
