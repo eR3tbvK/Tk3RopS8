@@ -271,13 +271,14 @@ public class Client {
 						players.get(indexOfPlayer).setClientServUsername(serverObject,myChat);
 						
 						inGame.setPlayers(players,indexOfPlayer);
+						System.out.println("\n\n at the end " + System.currentTimeMillis() + "\n\n");
 					}
 				}
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
 			}
-			System.out.println("\n\n at the end " + System.currentTimeMillis() + "\n\n");
+			
 		}
 		
 		public void moveEveryoneElse(int indexOfPlayer, ServerObject serverObject){
