@@ -47,7 +47,7 @@ public class Client {
 		//create a socket connection to the server on port 5000, and outputstream, inputstream 
 		//and have a thread call the IncomingReader method
 		try {
-			sock = new Socket("localhost",5000);
+			sock = new Socket("10.16.10.46",5000);
 			outputStream = new ObjectOutputStream(sock.getOutputStream());
 			inputStream = new ObjectInputStream(sock.getInputStream());
 
@@ -249,7 +249,7 @@ public class Client {
 					while((objFromInStream=inputStream.readUnshared()) != null ) {
 						ServerObject serverObject = (ServerObject) objFromInStream;
 						appendMessageIfNotNull(serverObject);		
-						System.out.println("\n\n at the beginning " + System.currentTimeMillis() + "\n\n");
+						System.out.println("\n\n at the beginning " + System.currentTimeMillis());
 						
 						
 						try{
@@ -271,12 +271,13 @@ public class Client {
 						players.get(indexOfPlayer).setClientServUsername(serverObject,myChat);
 						
 						inGame.setPlayers(players,indexOfPlayer);
-						System.out.println("\n\n at the end " + System.currentTimeMillis() + "\n\n");
+						System.out.println("\nat the end " + System.currentTimeMillis());
 					}
 				}
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
+				System.out.println("\nin the exception");
 			}
 			
 		}
