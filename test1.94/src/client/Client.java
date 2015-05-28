@@ -249,6 +249,7 @@ public class Client {
 					while((objFromInStream=inputStream.readUnshared()) != null ) {
 						ServerObject serverObject = (ServerObject) objFromInStream;
 						appendMessageIfNotNull(serverObject);		
+						System.out.println("\n\n at the beginning " + System.currentTimeMillis() + "\n\n");
 						
 						try{
 							indexOfPlayer = serverObject.getArrayList().indexOf(serverObject.getUsername());
@@ -275,6 +276,7 @@ public class Client {
 			catch(Exception ex) {
 				ex.printStackTrace();
 			}
+			System.out.println("\n\n at the end " + System.currentTimeMillis() + "\n\n");
 		}
 		
 		public void moveEveryoneElse(int indexOfPlayer, ServerObject serverObject){
