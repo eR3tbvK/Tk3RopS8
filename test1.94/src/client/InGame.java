@@ -78,7 +78,6 @@ public class InGame{
 
 	public void startDrawingPanelThread(){
 		//System.out.println("Starting Drawing Panel Thread");
-		
 		try{
 			Thread chatThread = new Thread(new DrawingPanel());
 			chatThread.start();

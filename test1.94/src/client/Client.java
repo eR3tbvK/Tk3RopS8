@@ -251,6 +251,7 @@ public class Client {
 						appendMessageIfNotNull(serverObject);		
 						System.out.println("\n\n at the beginning " + System.currentTimeMillis() + "\n\n");
 						
+						
 						try{
 							indexOfPlayer = serverObject.getArrayList().indexOf(serverObject.getUsername());
 							logoutHandler(serverObject);
