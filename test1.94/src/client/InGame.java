@@ -83,6 +83,7 @@ public class InGame{
 			chatThread.start();
 		}
 		catch(Exception ex){
+			System.err.println("making the thread catch");
 			ex.printStackTrace();
 		}
 		//world.startDrawingPanelThread();
@@ -156,13 +157,16 @@ public class InGame{
 							}
 						}
 					}catch(IndexOutOfBoundsException ex){
+						System.err.println("for loop index catch");
 						continue;
 					}
 				}
 			}catch (NullPointerException ed){
+				System.err.println("for loop null catch");
 				startDrawingPanelThread();
 			}
 			catch(Exception ev){
+				System.err.println("for loop catch");
 				ev.printStackTrace();	
 			}
 		}
