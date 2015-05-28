@@ -249,7 +249,7 @@ public class Client {
 					while((objFromInStream=inputStream.readUnshared()) != null ) {
 						ServerObject serverObject = (ServerObject) objFromInStream;
 						appendMessageIfNotNull(serverObject);		
-						System.out.println("\n\n at the beginning " + System.currentTimeMillis());
+						//System.out.println("\n\n at the beginning " + System.currentTimeMillis());
 						
 						
 						try{
@@ -267,31 +267,41 @@ public class Client {
 							moveEveryoneElse(indexOfPlayer, serverObject);		
 						}
 
-						players.get(indexOfPlayer).updateCoordinates(serverObject);
+						//players.get(indexOfPlayer).updateCoordinates(serverObject);
 						players.get(indexOfPlayer).setClientServUsername(serverObject,myChat);
 						
 						inGame.setPlayers(players,indexOfPlayer);
-						System.out.println("\nat the end " + System.currentTimeMillis());
+						//System.out.println("\nat the end " + System.currentTimeMillis());
 					}
 				}
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
-				System.out.println("\nin the exception");
 			}
 			
 		}
 		
+		public boolean thisUser(int indexOfPlayer){
+			return myChat.getUsername().equals(usernames.get(indexOfPlayer));
+		}
+		
 		public void moveEveryoneElse(int indexOfPlayer, ServerObject serverObject){
 			try{
-				for(PlayerMob eryElse : players){
-					if(eryElse == players.get(indexOfPlayer)){
-						players.get(indexOfPlayer).readMove(serverObject, indexOfPlayer);
-						continue;
-					}else{
-						eryElse.worldMove(serverObject,indexOfPlayer);
+				//if(thisUser(indexOfPlayer)){
+					for(PlayerMob eryElse : players){
+						if(eryElse == players.get(indexOfPlayer)){
+							players.get(indexOfPlayer).readMove(serverObject, indexOfPlayer);
+						}else{
+							eryElse.worldMove(serverObject,indexOfPlayer);
+						}
 					}
-				}
+				/*}else{
+					for(PlayerMob eryElse : players){
+						if(eryElse == players.get(indexOfPlayer)){
+							players.get(indexOfPlayer).readMove(serverObject, indexOfPlayer);
+						}
+					}
+				}*/
 			}
 			catch(IndexOutOfBoundsException e){
 				//Do Nothing
@@ -304,11 +314,11 @@ public class Client {
 			players.add(aPlayer);
 			inGame.drawFromServer(aPlayer);
 		}
-		
+
 		public void appendMessageIfNotNull(ServerObject serverObject){
 			if(incoming != null  && serverObject.getMessage() != null) incoming.append(serverObject.getMessage() + "\n");
 		}
-		
+
 		public void logoutHandler(ServerObject serverObject){
 			if(serverObject.getArrayList().size() > usernames.size() || serverObject.getArrayList().size() < usernames.size()){
 				usersIn = 1;
