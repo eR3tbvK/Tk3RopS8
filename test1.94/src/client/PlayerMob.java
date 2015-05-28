@@ -239,8 +239,9 @@ public class PlayerMob extends JPanel implements Serializable {
 			}
 		}
 	}
-	
+
 	public void updateCoordinates(ServerObject servObj){
+		//to do the weird movement is here
 		if(realXMove == 0 && realYMove == 0){
 			xCoordinate = servObj.getXCoordinate();
 		}
@@ -314,6 +315,7 @@ public class PlayerMob extends JPanel implements Serializable {
 			if(username.equals(clientUsername)){
 				//this.setBounds(xCoordinate, yCoordinate, 134, 150);
 				this.setBounds(300, 150, 134, 150);
+				
 				networkStartup.moveBackground(info, index);
 			}else{
 				//System.out.println(username + "is moving");

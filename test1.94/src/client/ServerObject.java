@@ -21,15 +21,8 @@ public class ServerObject implements Serializable {
 	private String username = "undefined";
 	private Boolean newPlayer = false;
 	private Boolean refreshCoordinates = false;
-	private Boolean garbageCollection = false;
 
-	public void setGarbageCollection(Boolean garbageCollection){
-		this.garbageCollection = garbageCollection;
-	}
-	public Boolean getGarbageCollection(){
-		return garbageCollection;
-	}
-	
+
 	public void setRefreshCoordinates(Boolean refreshCoordinates){
 		this.refreshCoordinates = refreshCoordinates;
 	}
