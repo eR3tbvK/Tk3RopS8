@@ -55,7 +55,7 @@ public class World extends InGame implements Runnable{
 				try{
 					for(int i=0;  i< players.size(); i++){
 						if (playerIndex != i && players.get(playerIndex).getBounds().intersects(players.get(i).getBounds())){
-							System.out.println("A COLLISION HAPPENED with player " + i);
+							//System.out.println("A COLLISION HAPPENED with player " + i);
 							if(players.get(playerIndex).getCross()){
 								players.get(i).setKnockedOut(true);
 							}
@@ -66,7 +66,7 @@ public class World extends InGame implements Runnable{
 				}
 			}
 		}catch (NullPointerException ed){
-			System.out.println("daaaamn");
+			//System.out.println("daaaamn");
 			startDrawingPanelThread();
 		}
 		catch(Exception ev){
@@ -75,7 +75,7 @@ public class World extends InGame implements Runnable{
 	}
 	
 	public void startDrawingPanelThread(){
-		System.out.println("Starting Drawing Panel Thread");
+		//System.out.println("Starting Drawing Panel Thread");
 		
 		try{
 			Thread chatThread = new Thread(new World());

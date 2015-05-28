@@ -276,7 +276,7 @@ public class PlayerMob extends JPanel implements Serializable {
 		//g.fillOval(0, 0, 100, 100);
 		super.paintComponent(g);
 		if(knockedOut){
-			System.out.println("You just got knocked out!!!");
+			//System.out.println("You just got knocked out!!!");
 			xCoordinate = -50;
 			yCoordinate = 200;
 			knockedOut = false;
@@ -316,7 +316,7 @@ public class PlayerMob extends JPanel implements Serializable {
 				this.setBounds(300, 150, 134, 150);
 				networkStartup.moveBackground(info, index);
 			}else{
-				System.out.println(username + "is moving");
+				//System.out.println(username + "is moving");
 				this.setBounds(xCoordinate, yCoordinate, 134, 150);
 			}
 			
