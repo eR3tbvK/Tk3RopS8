@@ -41,6 +41,7 @@ public class Server {
 			Object o1 = null;
 			try{
 				while ((o1 = inStream.readUnshared()) != null){
+					System.out.println(System.currentTimeMillis());
 					ServerObject info = (ServerObject) o1;
 					//the casted fressh new object that came in
 					info.setArrayList(usernames);
@@ -62,6 +63,7 @@ public class Server {
 					info.setArrayList(usernames);
 
 					tellEveryone(info);
+					System.out.println(System.currentTimeMillis());
 				}
 			}
 			catch(SocketException e){
