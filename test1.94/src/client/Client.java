@@ -250,6 +250,7 @@ public class Client {
 						ServerObject serverObject = (ServerObject) objFromInStream;
 						appendMessageIfNotNull(serverObject);		
 						System.out.println("\n\n at the beginning " + System.currentTimeMillis() + "\n\n");
+		
 						
 						try{
 							indexOfPlayer = serverObject.getArrayList().indexOf(serverObject.getUsername());
