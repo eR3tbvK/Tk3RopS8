@@ -24,6 +24,9 @@ public class Background extends JPanel implements Serializable {
 		try {
 			background = ImageIO.read(new File("images/Background-Dojo.png"));
 			this.setOpaque(false);
+			
+			
+			this.setVisible(false);
 			//lets debug just the players for now
 
 			this.setBounds(-400, -300, 1280, 800);
