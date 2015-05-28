@@ -51,6 +51,7 @@ public class Client {
 			outputStream = new ObjectOutputStream(sock.getOutputStream());
 			inputStream = new ObjectInputStream(sock.getInputStream());
 
+			
 			Thread remote = new Thread(new IncomingReader());
 			remote.start();
 		}
