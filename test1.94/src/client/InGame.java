@@ -77,7 +77,7 @@ public class InGame{
 	}
 
 	public void startDrawingPanelThread(){
-		System.out.println("Starting Drawing Panel Thread");
+		//System.out.println("Starting Drawing Panel Thread");
 		
 		try{
 			Thread chatThread = new Thread(new DrawingPanel());
@@ -90,7 +90,7 @@ public class InGame{
 	}
 
 	public void drawFromServer(PlayerMob plyr){
-		System.out.println("Added player to layeredPane");
+		//System.out.println("Added player to layeredPane");
 		layeredPane.add(plyr, 100);
 		layeredPane.moveToBack(background);
 	}
@@ -150,7 +150,7 @@ public class InGame{
 					try{
 						for(int i=0;  i< players.size(); i++){
 							if (playerIndex != i && players.get(playerIndex).getBounds().intersects(players.get(i).getBounds())){
-								System.out.println("A COLLISION HAPPENED with player " + i);
+								//System.out.println("A COLLISION HAPPENED with player " + i);
 								if(players.get(playerIndex).getCross()){
 									players.get(i).setKnockedOut(true);
 								}

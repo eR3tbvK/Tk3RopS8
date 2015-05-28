@@ -68,7 +68,7 @@ public class Client {
 				outputStream.writeUnshared(myChat);		//Sending the ChatObject to the server
 				outputStream.flush();
 				panel.removeAll();
-				System.out.println("before inGame.chat call");
+				//System.out.println("before inGame.chat call");
 				
 				inGame.chat(panel);						//Sending the frame to InGameChat
 			}
@@ -309,7 +309,7 @@ public class Client {
 		public void logoutHandler(ServerObject serverObject){
 			if(serverObject.getArrayList().size() > usernames.size() || serverObject.getArrayList().size() < usernames.size()){
 				usersIn = 1;
-				System.out.println("in the userIn: " + userIn);
+				//System.out.println("in the userIn: " + userIn);
 			}
 
 			if(usersIn == 1 && serverObject.getArrayList().size() < usernames.size()){
