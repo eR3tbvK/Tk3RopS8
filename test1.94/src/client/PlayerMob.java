@@ -44,6 +44,7 @@ public class PlayerMob extends JPanel implements Serializable {
 	private int index;
 	private ServerObject info;
 	private boolean user;
+	private int speed = 3;
 
 	public PlayerMob(Client netStartup) {
 		networkStartup = netStartup;
@@ -102,7 +103,7 @@ public class PlayerMob extends JPanel implements Serializable {
 
 	public void keyPressedUp(){
 		if (!pressedUp){
-			yMove = -1;
+			yMove = -speed;
 			pressedUp = true;
 			horVert = true;
 			networkStartup.keyPressed(horVert, yMove,yCoordinate);
@@ -111,7 +112,7 @@ public class PlayerMob extends JPanel implements Serializable {
 
 	public void keyPressedDown(){
 		if (!pressedDown){
-			yMove = 1;
+			yMove = speed;
 			pressedDown = true;
 			horVert = false;
 			networkStartup.keyPressed(horVert, yMove,yCoordinate);
@@ -120,7 +121,7 @@ public class PlayerMob extends JPanel implements Serializable {
 
 	public void keyPressedRight(){
 		if (!pressedRight){
-			xMove = 1;
+			xMove = speed;
 			pressedRight = true;
 			horVert = true;
 			networkStartup.keyPressed(xMove, horVert,xCoordinate);
@@ -129,7 +130,7 @@ public class PlayerMob extends JPanel implements Serializable {
 
 	public void keyPressedLeft(){
 		if (!pressedLeft){
-			xMove = -1;
+			xMove = -speed;
 			pressedLeft = true;
 			horVert = false;
 			networkStartup.keyPressed(xMove, horVert,xCoordinate);
@@ -151,7 +152,7 @@ public class PlayerMob extends JPanel implements Serializable {
 			networkStartup.keyReleased(horVert, yMove,yCoordinate);
 		}
 		if(pressedDown){
-			yMove = 1;
+			yMove = speed;
 			networkStartup.keyReleased(horVert, yMove,yCoordinate);
 		}
 	}
@@ -166,7 +167,7 @@ public class PlayerMob extends JPanel implements Serializable {
 			networkStartup.keyReleased(horVert,yMove,yCoordinate);
 		}
 		if(pressedUp){
-			yMove = -1;
+			yMove = -speed;
 			networkStartup.keyReleased(horVert,yMove,yCoordinate);
 		}
 	}
@@ -181,7 +182,7 @@ public class PlayerMob extends JPanel implements Serializable {
 			networkStartup.keyReleased(xMove, horVert,xCoordinate);
 		}
 		if(pressedLeft){
-			xMove = -1;
+			xMove = -speed;
 			networkStartup.keyReleased(xMove, horVert,xCoordinate);
 		}
 	}
@@ -197,7 +198,7 @@ public class PlayerMob extends JPanel implements Serializable {
 			networkStartup.keyReleased(xMove, horVert,xCoordinate);
 		}
 		if(pressedRight){
-			xMove = 1;
+			xMove = speed;
 			networkStartup.keyReleased(xMove, horVert,xCoordinate);
 		}
 	}
