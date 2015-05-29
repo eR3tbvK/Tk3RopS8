@@ -240,7 +240,7 @@ public class PlayerMob extends JPanel implements Serializable {
 		}
 	}
 
-	public void updateCoordinates(ServerObject servObj){
+	public void updateCoordinatesAndFace(ServerObject servObj){
 		//to do the weird movement is here
 		if(realXMove == 0 && realYMove == 0){
 			xCoordinate = servObj.getXCoordinate();

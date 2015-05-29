@@ -47,7 +47,7 @@ public class Client {
 		//create a socket connection to the server on port 5000, and outputstream, inputstream 
 		//and have a thread call the IncomingReader method
 		try {
-			sock = new Socket("10.16.10.46",5000);
+			sock = new Socket("localhost",5000);
 			outputStream = new ObjectOutputStream(sock.getOutputStream());
 			inputStream = new ObjectInputStream(sock.getInputStream());
 
@@ -268,13 +268,14 @@ public class Client {
 							moveEveryoneElse(indexOfPlayer, serverObject);		
 						}
 
-						//players.get(indexOfPlayer).updateCoordinates(serverObject);
+						players.get(indexOfPlayer).updateCoordinatesAndFace(serverObject);
 						players.get(indexOfPlayer).setClientServUsername(serverObject,myChat);
 						
 						inGame.setPlayers(players,indexOfPlayer);
 						//System.out.println("\nat the end " + System.currentTimeMillis());
 					}
 				}
+				
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
