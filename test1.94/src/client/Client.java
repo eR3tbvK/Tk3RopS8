@@ -262,13 +262,15 @@ public class Client {
 
 						Boolean newUser = ((usernames.indexOf(serverObject.getUsername()) < 0 || usernames.indexOf(serverObject.getUsername()) >= usernames.size())) && serverObject.getUsername() != "undefined";
 						if(newUser){
-							addNewUser(serverObject);			
+							addNewUser(serverObject);
+							players.get(indexOfPlayer).updateCoordinates(serverObject);
 						}
 						else{
 							moveEveryoneElse(indexOfPlayer, serverObject);		
 						}
 
-						players.get(indexOfPlayer).updateCoordinatesAndFace(serverObject);
+						//players.get(indexOfPlayer).updateCoordinates(serverObject);
+						players.get(indexOfPlayer).updateFace(serverObject);
 						players.get(indexOfPlayer).setClientServUsername(serverObject,myChat);
 						
 						inGame.setPlayers(players,indexOfPlayer);

@@ -20,6 +20,18 @@ public class InGame{
 	private int playerIndex;
 	private UI userInterface;
 	private World world;
+	
+
+
+	private long startTime;
+	private long URDTimeMillis;
+	private long waitTime;
+	private long totalTime;
+	private int FPS = 30;
+	private double averageFPS = 14;
+	private int frameCount = 0;
+	private int maxFrameCount = 14;
+	private long targetTime = 1000 / FPS;
 
 	
 	public InGame(PlayerMob plyr){
@@ -123,16 +135,19 @@ public class InGame{
 				//layeredPane.add(background,99);
 				
 				while(true){
-
+					
+					startTime = System.nanoTime();
+						/*
+ 
 					try {
-						
 						//System.out.println("before Sleep");
 						Thread.sleep(14);
 						//System.out.println("after sleep");
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-
+						*/
+					
 					panel.remove(layeredPane);
 					Iterator<PlayerMob> allPlayers = players.iterator();
 					PlayerMob aPlayer = null;
@@ -160,6 +175,9 @@ public class InGame{
 						System.err.println("for loop index catch");
 						continue;
 					}
+					
+					delay();
+					
 				}
 			}catch (NullPointerException ed){
 				System.err.println("for loop null catch");
@@ -170,7 +188,31 @@ public class InGame{
 				ev.printStackTrace();	
 			}
 		}
+		
+		
+		public void delay(){
+			
+			URDTimeMillis = (System.nanoTime() - startTime) / 1000000;
+			waitTime = targetTime - URDTimeMillis;
+			
+			try {
+				
+				//System.out.println("before Sleep");
+				Thread.sleep(waitTime);
+				//System.out.println("after sleep");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			totalTime += System.nanoTime() - startTime;
+			frameCount++;
+			if(frameCount == maxFrameCount){
+				averageFPS = 1000.0 /((totalTime / frameCount) / 1000000);
+				frameCount = 0;
+				totalTime = 0;
+			}
+		}
+		
+		
 	}
-
-
 }

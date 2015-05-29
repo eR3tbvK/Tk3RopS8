@@ -22,14 +22,14 @@ public class Background extends JPanel implements Serializable {
 	public Background(){
 
 		try {
-			background = ImageIO.read(new File("images/Background-Dojo.png"));
+			background = ImageIO.read(new File("images/Background3.png"));
 			this.setOpaque(false);
 			
 			
-			this.setVisible(false);
+			this.setVisible(true);
 			//lets debug just the players for now
 
-			this.setBounds(-400, -300, 1280, 800);
+			this.setBounds(-400, -300, 2216, 1168);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
