@@ -2,6 +2,7 @@ package client;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
+
 import javax.swing.*;
 
 
@@ -62,21 +63,40 @@ public class Client {
 
 	public void LoginPageLoginButtonListener (String usr, JPanel panel){
 		username = usr;
-		try{
-			if(username.length() > 0) {
-				myChat.setUsername(username);
-				myChat.setNewPlayer(true);
-				outputStream.writeUnshared(myChat);		//Sending the ChatObject to the server
-				outputStream.flush();
-				panel.removeAll();
-				//System.out.println("before inGame.chat call");
-				
-				inGame.chat(panel);						//Sending the frame to InGameChat
+		try{	
+
+			if(username.length() > 0) {				
+				initializeUsernames();
+				//to do: make this synchronized	
+				Thread.sleep(100);	//This sleep gives time for the Incoming reader class to update the usernames from the server					
+
+				Boolean duplicateUser = usernames.contains(username);
+
+				if(!duplicateUser){
+					createNewUser();
+					startGame(panel);			
+				}
 			}
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
 		}
+	}
+	
+	public void initializeUsernames() throws IOException{
+		outputStream.writeUnshared(myChat);		//Sending the ChatObject to the server
+		outputStream.flush();
+	}
+	
+	public void createNewUser() throws IOException{
+		myChat.setUsername(username);
+		outputStream.writeUnshared(myChat);		//Sending the ChatObject to the server
+		outputStream.flush();
+	}
+	
+	public void startGame(JPanel panel){
+		panel.removeAll();
+		inGame.chat(panel);
 	}
 
 	public void InGameChatInitialize(JTextField out,JTextArea in){
@@ -249,6 +269,7 @@ public class Client {
 				synchronized(inputStream){
 					while((objFromInStream=inputStream.readUnshared()) != null ) {
 						ServerObject serverObject = (ServerObject) objFromInStream;
+					if(!serverObject.getUsername().equals("undefined")){
 						appendMessageIfNotNull(serverObject);		
 						//System.out.println("\n\n at the beginning " + System.currentTimeMillis());
 						
@@ -260,7 +281,7 @@ public class Client {
 							//do nothing
 						}
 
-						Boolean newUser = ((usernames.indexOf(serverObject.getUsername()) < 0 || usernames.indexOf(serverObject.getUsername()) >= usernames.size())) && serverObject.getUsername() != "undefined";
+						Boolean newUser = ((usernames.indexOf(serverObject.getUsername()) < 0 || usernames.indexOf(serverObject.getUsername()) >= usernames.size()));
 						if(newUser){
 							addNewUser(serverObject);
 							players.get(indexOfPlayer).updateCoordinates(serverObject);
@@ -277,7 +298,7 @@ public class Client {
 						//System.out.println("\nat the end " + System.currentTimeMillis());
 					}
 				}
-				
+				}
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();

@@ -1,4 +1,5 @@
 package client;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -38,7 +39,7 @@ public class Background extends JPanel implements Serializable {
 	public void paintComponent(Graphics g){
 		g.drawImage(background, 0,0, null);
 		this.setOpaque(false);
-		this.setBounds(-xCoordinate, -yCoordinate, 1280, 800);
+		this.setBounds(-xCoordinate, -yCoordinate, 2216, 1168);
 	}
 	
 	

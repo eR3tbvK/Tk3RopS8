@@ -45,9 +45,11 @@ public class Server {
 					ServerObject info = (ServerObject) o1;
 					//the casted fressh new object that came in
 					info.setArrayList(usernames);
-
-					if(info.getUsername() != "undefined" && info.getArrayList().indexOf(info.getUsername()) < 0){
-						System.out.println("New User Logged in");
+					if(info.getUsername().equals("undefined")){
+						tellThisGuy(clientObjects,usernames.size());
+					}
+					if(!info.getUsername().equals("undefined") && info.getArrayList().indexOf(info.getUsername()) < 0){
+						System.out.println("New User Logged in: " + info.getUsername());
 
 						usernames.add(info.getUsername());
 						clientObjects.add(info);
@@ -55,7 +57,7 @@ public class Server {
 						xCoordinates.add(info.getXCoordinate());
 						yCoordinates.add(info.getYCoordinate());
 					}
-					else if(info.getUsername() != "undefined" && usernames.indexOf(info.getUsername()) >= 0){
+					else if(!info.getUsername().equals("undefined") && usernames.indexOf(info.getUsername()) >= 0){
 						clientObjects.set(usernames.indexOf(info.getUsername()), info);
 						xCoordinates.set(usernames.indexOf(info.getUsername()),info.getXCoordinate());
 						yCoordinates.set(usernames.indexOf(info.getUsername()),info.getYCoordinate());

@@ -19,7 +19,6 @@ public class ServerObject implements Serializable {
 	private ArrayList<String> usernames;
 	private String message;
 	private String username = "undefined";
-	private Boolean newPlayer = false;
 	private Boolean refreshCoordinates = false;
 
 
@@ -45,14 +44,6 @@ public class ServerObject implements Serializable {
 	
 	public int getYCoordinate(){
 		return yCoordinate;
-	}
-	
-	public void setNewPlayer(Boolean newPlayer){
-		this.newPlayer = newPlayer;
-	}
-	
-	public Boolean getNewPlayer(){
-		return newPlayer;
 	}
 	
 	public void setArrayList(ArrayList<String> usernames){
