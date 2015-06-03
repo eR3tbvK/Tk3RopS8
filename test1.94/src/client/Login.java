@@ -1,5 +1,6 @@
 package client;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -10,6 +11,13 @@ public class Login {
 	private JTextField inputUsername;
 	private JPanel applet;
 	private Client networkStartup;
+	
+	JPanel mainPanel = new JPanel();
+	JPanel linePanel = new JPanel();
+	JPanel alertPanel = new JPanel();
+	JLabel inputUsernameLabel = new JLabel("inputUsername:");	//Make userinput label 
+	JLabel duplicateMsg = new JLabel("This user has been already taken. Please try a different username.");
+	//JLabel duplicateMsg = new JLabel("<html><font color='red'>This user has been already taken. Please try a different username.</font></html>");
 
 	public Login(JPanel applet){
 		this.applet = applet;
@@ -19,11 +27,14 @@ public class Login {
 
 		//applet = new JFrame("Rebirth of Martial Arts");			//Set title
 
-		JPanel mainPanel = new JPanel();
+		/*JPanel mainPanel = new JPanel();
 		JPanel linePanel = new JPanel();
 		JLabel inputUsernameLabel = new JLabel("inputUsername:");	//Make userinput label 
+		JLabel duplicateMsg = new JLabel("This user has been already taken. Please try a different username.");
+		*/
 
 		inputUsername = new JTextField(10);							//Make userinput field 
+		duplicateMsg.setForeground(Color.RED);						//Make duplicateMsg in RED color
 
 		JButton loginButton = new JButton("login"); 				//Make button
 		loginButton.addActionListener(new LoginButtonListener());	//Listener for the login button
@@ -39,6 +50,7 @@ public class Login {
 
 		//Add the interface 
 		linePanel.add(inputUsernameLabel);
+		//alertPanel.add(duplicateMsg);
 		linePanel.add(inputUsername);
 		linePanel.add(loginButton);
 		mainPanel.add(linePanel);
@@ -57,6 +69,16 @@ public class Login {
 	public void setNetObject(Client netObj){
 		networkStartup = netObj;		//Set networkStartup to the original ChatClient object
 	}
+	
+	public void duplicateUserMsg(String usr){
+		// FYI - Pop-up message 
+		//JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
+		alertPanel.add(duplicateMsg);
+		mainPanel.add(alertPanel);
+		applet.validate();
+		applet.repaint();
+	}
+	
 	
 	public class LoginButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){

@@ -23,14 +23,14 @@ public class Background extends JPanel implements Serializable {
 	public Background(){
 
 		try {
-			background = ImageIO.read(new File("images/Background3.png"));
+			background = ImageIO.read(new File("images/Background.png"));
 			this.setOpaque(false);
 			
 			
 			this.setVisible(true);
 			//lets debug just the players for now
 
-			this.setBounds(-400, -300, 2216, 1168);
+			this.setBounds(-400, -300, 2216, 2168);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class Background extends JPanel implements Serializable {
 	public void paintComponent(Graphics g){
 		g.drawImage(background, 0,0, null);
 		this.setOpaque(false);
-		this.setBounds(-xCoordinate, -yCoordinate, 2216, 1168);
+		this.setBounds(-xCoordinate, -yCoordinate, 2216, 2168);
 	}
 	
 	

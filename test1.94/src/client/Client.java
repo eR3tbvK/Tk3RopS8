@@ -75,6 +75,8 @@ public class Client {
 				if(!duplicateUser){
 					createNewUser();
 					startGame(panel);			
+				} else {
+					loginPage.duplicateUserMsg(username);
 				}
 			}
 		}
